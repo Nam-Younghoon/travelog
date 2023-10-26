@@ -25,7 +25,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # OUTER LIBS
+    'ckeditor',
     # CUSTOM APP
+    "home",
     "blog",
     "user",
 ]
@@ -118,3 +121,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+LOGIN_URL = '/user/login/'
+LOGOUT_URL = '/user/logout/'
