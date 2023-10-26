@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 검색</title>
+</head>
+<body>
+    <h1>게시물 검색하기</h1>
+    <form action="" method="get">
+        {% csrf_token %}
+        <p>검색 : <input type="search" placeholder="검색어를 입력하세요" name="q"></p>
+        <p>
+            <select name="sort">
+                <option value="latest" selected>최신순</option>
+                <option value="past">과거순</option>
+            </select>
+        </p>
+        <button type="submit">제출</button>
+
+    </form>
+
+    {% for post in posts %}
+        <p><a href="{% url 'blog:blog_detail' post.pk %}">{{ post.title }}</a></p>
+        <p>{{ post.updated_at|date:"Y년 m월 d일" }}</p>
+        <hr>
+    {% endfor %}
+
+</body>
+</html>

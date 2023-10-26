@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시물 작성</title>
+</head>
+<body>
+    <h1>게시물 작성하기</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <p>
+            <label for="id_tag">태그:</label>
+            <input type="text" name="tag" id="id_tag" value="{{ tag_default }}"> 
+        </p>
+        <button type="submit">올리기</button>
+    </form>
+</body>
+</html>
