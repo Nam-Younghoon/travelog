@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelog</title>
+</head>
+<body>
+    <h1>Travelog Home Page</h1>
+    <p><a href="{% url 'blog:blog_list' %}">입장하기</a></p>
+
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'user:user_logout' %}">로그아웃</a></p>
+    {% else %}
+        <p><a href="{% url 'user:user_register' %}">회원가입</a></p>
+        <p><a href="{% url 'user:user_login' %}">로그인</a></p>
+    {% endif %}
+</body>
+</html>
