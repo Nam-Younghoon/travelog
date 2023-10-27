@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-</head>
-<body>
-    <h1>Blog Main 리스트 페이지</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+<!-- banner -->
+<div class="banner">
     
+</div>
+<!-- //banner -->
+<main>
+    <div class="max-width">
+        <h2 class="a11y-hidden">Post</h2>
+				<ul class="posts">
+                </ul>
+    </div>
+</main>
+{% endblock %}
+
+<!--
     {% if user.is_authenticated %}
         <button><a href="{% url 'blog:blog_write' %}">글쓰기</a></button>
     {% endif %}
@@ -19,5 +28,4 @@
         <p>Write By {{ post.author }}</p>
         <hr>
     {% endfor %}
-</body>
-</html>
+-->

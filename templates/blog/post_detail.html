@@ -9,7 +9,11 @@
     
     <h1>Blog Detail 상세 페이지</h1>
     <p>{{ post.title }}</p>
-    <p><img src='{{ post.thumbnail_image.url }}'></p>
+
+    {% if post.thumbnail_image %}
+        <p><img src='{{ post.thumbnail_image.url }}'></p>
+    {% endif %}
+
     <p>{{ post.body|safe }}</p>
     <p>{{ post.updated_at|date:"Y년 m월 d일" }}</p>
     <hr>
