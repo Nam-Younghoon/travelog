@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # OUTER LIBS
     'ckeditor',
+    'widget_tweaks',
     # CUSTOM APP
     "home",
     "blog",
@@ -123,6 +124,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
+# CKEDITOR_IMAGE_BACKEND = "pillow"
+# CKEDITOR_THUMBNAIL_SIZE = (300, 300)
 
 LOGIN_URL = '/user/login/'
 LOGOUT_URL = '/user/logout/'
+
+# Custom User
+AUTH_USER_MODEL = 'user.User'

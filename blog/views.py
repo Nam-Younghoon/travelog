@@ -15,7 +15,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 class BlogListView(ListView):
     model = Post
     context_object_name = 'posts'
-    ordering = '-updated_at'
+    ordering = '-created_at'
 class BlogDetailView(DetailView):
     model = Post
     context_object_name = 'post'
