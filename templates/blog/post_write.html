@@ -1,22 +1,60 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시물 작성</title>
-</head>
-<body>
-    <h1>게시물 작성하기</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+{% load widget_tweaks %}
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+<style rel="stylesheet">
+    .django-ckeditor-widget {
+        width: 100%;
+    }
+</style>
+
+<script type="text/javascript">
+    window.onpageshow = function(event) {
+        if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+            // Back Forward Cache로 브라우저가 로딩될 경우 혹은 브라우저 뒤로가기 했을 경우
+            // 이벤트 추가하는 곳
+            window.location.reload()
+        }
+}
+</script>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container-fluid p-5">
         {{ form.media }}
-        {{ form.as_p }}
-        <p>
-            <label for="id_tag">태그:</label>
-            <input type="text" name="tag" id="id_tag" value="{{ tag_default }}"> 
-        </p>
-        <button type="submit">올리기</button>
-    </form>
-</body>
-</html>
+        <div class="row g-3 mb-4">
+            <div class="col">
+                {{ form.title }}
+            </div>
+        </div>
+        <div class="row g-3 mb-4">
+            <div class="col">
+                {{ form.body }}
+                <div class="fs-5" style="color: brown;">* {{ form.body.help_text }}</div>
+            </div>
+        </div>
+        <div class="row g-3 mb-4">
+            <div class="col">
+                <div class="form-label fs-6">썸네일 이미지: <a href="{{ post.thumbnail_image.url }}" style="color: blue;">{{ post.thumbnail_image }}</a></div>
+                {{ form.thumbnail_image }}
+            </div>
+        </div>
+        <div class="row g-3 mb-4">
+            <div class="col">
+                <div class="form-label fs-6">카테고리:</div>
+                {{ form.category }}
+            </div>
+        </div>
+        <div class="row g-3 mb-4">
+            <div class="col">
+                <div class="form-label fs-6">태그:</div>
+                <input type="text" name="tag" id="id_tag" value="{{ tag_default }}" class="form-control" placeholder="태그는 ','로 구분합니다. 예시: '춘천, 일상, 여행, 당일치기, 먹방'"> 
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary btn-lg">올리기</button>
+    </div>
+</form>
+
+
+{% endblock %}

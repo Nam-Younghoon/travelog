@@ -1,20 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block contents %}
+<script type="text/javascript">
+    window.onpageshow = function(event) {
+        if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+            // Back Forward Cache로 브라우저가 로딩될 경우 혹은 브라우저 뒤로가기 했을 경우
+            // 이벤트 추가하는 곳
+            window.location.reload()
+        }
+}
+</script>
+
 <!-- banner -->
-<div class="banner">
-    
-</div>
+<div class="banner"></div>
 <!-- //banner -->
 <main>
-    <div class="max-width">
-        <h2 class="a11y-hidden">Post</h2>
-				<ul class="posts">
-                </ul>
+    <div class="row row-cols-1 row-cols-md-3 g-4 p-5 ">
+        
+        {% for post in posts %}
+        <div class="col" style="height: 24rem;">
+            <a href="{% url 'blog:blog_detail' post.pk %}">
+                <div class="card h-100">
+                <img src="{{ post.thumbnail_image.url }}" class="card-img-top" alt="..." width="320" height="167" style="object-fit: cover;">
+                <div class="d-flex card-body flex-column">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text fs-6 mb-auto">{{ post.body|striptags|safe }}</p>
+                    <div class="fs-6 pt-4">{{ post.created_at|date:"Y년 m월 d일 G:i" }}</div>
+                </div>
+                <div class="d-flex card-footer justify-content-between">
+                    <small class="text-muted fs-6">
+                        <span>Posted by</span>
+                        <span style="color: black;"><b><i>{{ post.author.nickname }}</i></b></span>
+                    </small>
+                    <small class="text-muted fs-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="{% static './assets/view_icon.svg' %}">
+                            <span>{{ post.views_count }}</span>
+                        </div>
+                    </small>
+                </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        
     </div>
 </main>
 {% endblock %}
+
 
 <!--
     {% if user.is_authenticated %}
