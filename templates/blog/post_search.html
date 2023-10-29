@@ -1,30 +1,73 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시물 검색</title>
-</head>
-<body>
-    <h1>게시물 검색하기</h1>
-    <form action="" method="get">
-        {% csrf_token %}
-        <p>검색 : <input type="search" placeholder="검색어를 입력하세요" name="q"></p>
-        <p>
-            <select name="sort">
-                <option value="latest" selected>최신순</option>
-                <option value="past">과거순</option>
-            </select>
-        </p>
-        <button type="submit">제출</button>
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block contents %}
 
-    </form>
+<script type="text/javascript">
 
-    {% for post in posts %}
-        <p><a href="{% url 'blog:blog_detail' post.pk %}">{{ post.title }}</a></p>
-        <p>{{ post.updated_at|date:"Y년 m월 d일" }}</p>
-        <hr>
-    {% endfor %}
+    window.onload = () => {
+        const searchParams=new URLSearchParams(location.search)
+        console.log(searchParams)
+        const sortType = document.getElementById('sort_type')
+        for (i = 0; i < sortType.options.length; i++){
+            if (searchParams.get('sort') == sortType.options[i].value){
+                sortType.value=sortType.options[i].value
+            }
+        }
+    }
+</script>
 
-</body>
-</html>
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col col-md-7 g-5 pt-3">
+                <form action="" method="get">
+                    {% csrf_token %}
+                    <p>
+                        <input type="search" placeholder="검색어를 입력하세요" name="q"  value="{{ request.GET.q }}" class="form-control rounded-pill" style="height: 3rem; padding: 25px 30px 25px 30px;">
+                    </p>
+                    <p>
+                        <select name="sort" class="form-select rounded-pill" style="padding: 5px 30px 5px 30px;" id="sort_type">
+                            <option value="latest" selected>최신순</option>
+                            <option value="past">과거순</option>
+                        </select>
+                    </p>
+                    <div class="mt-4">
+                        <button type="submit" class="container-fluid btn btn-secondary align-items-right">제출</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-1 g-4 p-5 justify-content-center">
+            {% for post in posts %}
+            <div class="col col-md-7 mb-5" style="height: 26rem;">
+                <a href="{% url 'blog:blog_detail' post.pk %}">
+                    <div class="card h-100">
+                    <img src="{{ post.thumbnail_image.url }}" class="card-img-top" alt="..." width="320" height="167" style="object-fit: cover;">
+                    <div class="d-flex card-body flex-column">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text fs-6 mb-auto">{{ post.body|striptags|safe }}</p>
+                        <div class="fs-6 pt-4">{{ post.created_at|date:"Y년 m월 d일 G:i" }}</div>
+                    </div>
+                    <div class="d-flex card-footer justify-content-between">
+                        <small class="text-muted fs-6">
+                            <span>Posted by</span>
+                            <span style="color: black;"><b><i>{{ post.author.nickname }}</i></b></span>
+                        </small>
+                        <small class="text-muted fs-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="{% static './assets/view_icon.svg' %}">
+                                <span>{{ post.views_count }}</span>
+                            </div>
+                        </small>
+                    </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+{% endblock %}

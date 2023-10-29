@@ -1,10 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth import get_user_model, password_validation
 from django.utils.translation import gettext_lazy as _
 
 class CustomUserCreationForm(UserCreationForm):
-
     username = forms.CharField(
         label='아이디',
         help_text=_(
@@ -39,11 +38,19 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ['username', 'nickname', 'email']
 
 
-
-        
-
 class CustomUserChangeForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ['nickname', 'email']
+
+        widgets = {
+            'nickname': forms.TextInput(attrs={
+                'class': 'col form-control',
+                'style': 'margin-right: 1rem; margin-left: 1rem;'
+            }),
+            'email': forms.TextInput(attrs={
+                'class': 'col form-control',
+                'style': 'margin-right: 1rem; margin-left: 1rem;'
+            }),
+        }
         

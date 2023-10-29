@@ -27,11 +27,14 @@
             <div class="col">
                 {{ form.title }}
             </div>
+            {% for error in form.title.errors %}
+                <div class="help-block" style="color: rgb(253, 64, 64);">{{ error }}</div>
+            {% endfor %}
         </div>
         <div class="row g-3 mb-4">
             <div class="col">
                 {{ form.body }}
-                <div class="fs-5" style="color: brown;">* {{ form.body.help_text }}</div>
+                <div class="fs-6" style="color: brown;">* {{ form.body.help_text }}</div>
             </div>
         </div>
         <div class="row g-3 mb-4">
@@ -45,6 +48,9 @@
                 <div class="form-label fs-6">카테고리:</div>
                 {{ form.category }}
             </div>
+            {% for error in form.category.errors %}
+                <div class="help-block" style="color: rgb(253, 64, 64);">{{ error }}</div>
+            {% endfor %}
         </div>
         <div class="row g-3 mb-4">
             <div class="col">
@@ -55,6 +61,5 @@
         <button type="submit" class="btn btn-outline-secondary btn-lg">올리기</button>
     </div>
 </form>
-
 
 {% endblock %}

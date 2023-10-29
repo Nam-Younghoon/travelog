@@ -124,11 +124,10 @@ class BlogSearchView(ListView):
 
     def get_ordering(self):
         ordering = self.request.GET.get('sort', '')
-        print(ordering)
         if ordering == 'latest':
-            return '-updated_at'
+            return '-created_at'
         elif ordering == 'past':
-            return 'updated_at'
+            return 'created_at'
 
 
 blog_list = BlogListView.as_view()

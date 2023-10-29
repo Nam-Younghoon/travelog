@@ -32,7 +32,7 @@ a {
 }
 
 body {
-	font-size: 1.6rem;
+	/* font-size: 1.6rem; */
 	line-height: 1.4;
 }
 
@@ -63,7 +63,7 @@ textarea:focus {
 }
 
 body {
-	background: var(--gray-background-light);
+	background: var(--white-color);
 }
 
 .a11y-hidden {

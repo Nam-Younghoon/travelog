@@ -30,6 +30,20 @@
 
 			.card{
 				overflow: hidden;
+				background: var(--gray-background-light);
+			}
+
+			.github-image {
+				width: 24px;
+				height: 24px;
+			}
+
+			#wrap {
+				min-height: calc(100vh - 4rem);
+			}
+
+			footer {
+				height: 4rem;
 			}
 
 		</style>
@@ -112,11 +126,34 @@
 			</nav>
 		</header>
 
-		{% block contents %}
-		{% endblock %}
+		<div id="wrap">
+			{% block contents %}
+			{% endblock %}
+		</div>
 		
 		<!-- footer -->
-		
+		<footer class="footer mt-auto p-3 bg-white" style="bottom: 0;">
+			<div class="d-flex container-fluid justify-content-between">
+				<span class="text-muted fs-5">Copyright 2023. 남영훈 all rights reserved.</span>
+				<div class="row">
+					<div class="col">
+						<a href="https://github.com/Nam-Younghoon" target="_blank">
+							<img src="{% static './assets/github-mark.svg' %}" class="github-image">
+						</a>
+					</div>
+					<div class="col">
+						<a href="https://www.instagram.com/n.y.hoon/" target="_blank">
+							<img src="{% static './assets/instagram-icon.svg' %}" class="github-image">
+						</a>
+					</div>
+					<div class="col">
+						<a href="https://velog.io/@huny3410" target="_blank">
+							<img src="{% static './assets/velog.svg' %}" class="github-image">
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
 		<!-- //footer -->
 	</body>
 </html>

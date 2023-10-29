@@ -2,11 +2,12 @@ from collections.abc import Iterable
 from django.db import models
 from django.conf import settings
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.urls import reverse
 
 class Post(models.Model):
     title = models.CharField('제목', max_length=100)
     # body = models.TextField('내용')
-    body = RichTextUploadingField('본문', blank=False, null=False, help_text='본문내 이미지는 끌어다가 올리거나, 파일 첨부를 클릭하여 올릴 수 있습니다. 이미지가 너무 크지 않게 조절 해주세요')
+    body = RichTextUploadingField('본문', blank=False, null=False, help_text='파일첨부는 이미지만 지원합니다. 본문내 이미지는 끌어다가 올리거나, 툴바에서 올릴 수 있습니다. 이미지가 너무 크지 않게 조절 해주세요 (추천 사이즈 512)')
     thumbnail_image = models.ImageField(
         '썸네일', upload_to='images/%Y/%m/%d/', blank=True, null=True, default='default_gray.png'
     )
@@ -25,6 +26,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    
 
     
 class Category(models.Model):
