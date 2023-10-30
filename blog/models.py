@@ -9,7 +9,7 @@ class Post(models.Model):
     # body = models.TextField('내용')
     body = RichTextUploadingField('본문', blank=False, null=False, help_text='파일첨부는 이미지만 지원합니다. 본문내 이미지는 끌어다가 올리거나, 툴바에서 올릴 수 있습니다. 이미지가 너무 크지 않게 조절 해주세요 (추천 사이즈 512)')
     thumbnail_image = models.ImageField(
-        '썸네일', upload_to='images/%Y/%m/%d/', blank=True, null=True, default='default_gray.png'
+        '썸네일', upload_to='images/%Y/%m/%d/', blank=True, null=True
     )
     category = models.ForeignKey(
         'Category', on_delete=models.CASCADE, verbose_name='카테고리', 
