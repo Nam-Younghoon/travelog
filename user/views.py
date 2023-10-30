@@ -3,7 +3,7 @@ from django import http
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
-from django.views.generic import CreateView, TemplateView, FormView
+from django.views.generic import CreateView, TemplateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm, CustomUserChangeForm
@@ -50,6 +50,10 @@ class UserProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
     def test_func(self) -> bool | None:
         return self.get_object() == self.request.user
     
+class UserDeleteView(DeleteView):
+    template_name = 'user/user_confirm_delete.html'
+    model = get_user_model()
+    success_url = reverse_lazy('home:home')
 
 
 
@@ -60,6 +64,7 @@ user_register = UserRegisterView.as_view()
 user_logout = UserLogoutView.as_view()
 user_login = UserLoginView.as_view()
 user_profile = UserProfileView.as_view()
+user_delete = UserDeleteView.as_view()
 user_change_password = UserChangePasswordView.as_view()
 user_change_password_done = UserPasswordChangeDoneView.as_view()
 user_update = UserProfileUpdateView.as_view()

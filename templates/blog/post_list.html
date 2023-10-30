@@ -51,18 +51,3 @@
     </div>
 </main>
 {% endblock %}
-
-
-<!--
-    {% if user.is_authenticated %}
-        <button><a href="{% url 'blog:blog_write' %}">글쓰기</a></button>
-    {% endif %}
-
-    {% for post in posts %}
-        <p><a href="{% url 'blog:blog_detail' post.pk %}">{{ post.title}}</a></p>
-        <p>{{ post.updated_at|date:"Y년 m월 d일" }}</p>
-        <p>조회수 : {{ post.views_count }}</p>
-        <p>Write By {{ post.author }}</p>
-        <hr>
-    {% endfor %}
--->

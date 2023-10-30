@@ -28,9 +28,7 @@
         margin: 2rem auto 0px;
     }
 
-    
 </style>
-
 
 <div class="container">
     <div class="row justify-content-center">
@@ -56,14 +54,149 @@
         
             <p style="margin-top: 32px;" class="ck-body fs-6">{{ post.body|safe }}</p>
             <hr>
-            <p class="mt-5 mb-5">
-                <a href="{% url 'blog:blog_list' %}" class="btn btn-outline-secondary">← 목록으로</a>
-            </p>
+            <div class="container mt-2 mb-2">
+                <div class="row justify-content-between">
+                    <div class="d-flex col-auto p-0 flex-row">
+                        {% if post.get_previous %}
+                        <a href="{% url 'blog:blog_detail' post.get_previous.pk %}" class="d-flex flex-row pe-4">
+                            <div class="align-self-center">
+                                ← 
+                            </div>
+                            <div class="d-flex flex-column ms-2 text-start">
+                                <div style="font-size: 0.85rem;">이전글</div>
+                                <div style="font-size: 1rem;">{{ post.get_previous.title }}</div>
+                            </div>
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="d-flex col-auto p-0 flex-row">
+                        {% if post.get_next %}
+                        <a href="{% url 'blog:blog_detail' post.get_next.pk %}" class="d-flex flex-row ps-4">
+                            <div class="d-flex flex-column me-2 text-end">
+                                <div style="font-size: 0.85rem;">다음글</div>
+                                <div style="font-size: 1rem;">{{ post.get_next.title }}</div>
+                            </div>
+                            <div class="align-self-center">
+                                → 
+                            </div>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-4 mb-5">
+                <div class="row">
+                    <a href="{% url 'blog:blog_list' %}" class="btn btn-secondary">목록으로</a>
+                </div>
+            </div>
+
+            <form action="{% url 'blog:blog_comment' post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="container mt-4 mb-5">
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            {{ commentForm.comment }}
+                        </div>
+                        <div class="col-12 p-0 text-end mt-3">
+                            <button type="submit" class="btn btn-outline-primary">댓글 달기</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="container mb-5">
+                {% for comment in post.comments.all %}
+                <div class="row">
+
+                    <!-- <div class="card g-2 p-2" style="background: white;"> -->
+                        <div class="d-flex col-12 flex-row justify-content-between" style="font-size: 1.1rem;">
+                            <div class="align-self-center"><b>{{ comment.author.nickname }}</b></div>
+                            {% if user == comment.author %}
+                            <button type="submit" class="btn btn-link-light" style="text-decoration: none;" value="{% url 'blog:blog_delete_comment' comment.pk %}" onclick="deleteComment(this)">삭제</button>
+                            {% endif %}
+                        </div>
+                        <div class="col-12" style="font-size: 0.9rem;">
+                            {{ comment.created_at|date:'Y년 m월 d일 G:i' }}
+                        </div>
+                        <br>
+                        <div class="col-12 mt-4">
+                            {{ comment.message }}
+                        </div>
+                        <div class="col-12 mt-3 mb-1">
+                            <button id="text_comment_btn_{{ comment.pk }}" class="btn btn-link p-0" style="text-decoration: none; color: #6c757d;" onclick="replyComment({{ comment.pk }})">댓글 달기</button>
+                        </div>
+                        
+                        <!--
+                            여기서 대댓글이 보여집니다.
+                        -->
+
+                        <div class="col-12 mt-3 mb-1" id="text_{{ comment.pk }}"  style="display: none;" >
+                            <form action="{% url 'blog:blog_comment_reply' comment.pk %}" method="post">
+                                {% csrf_token %}
+                                <div class="container p-0">
+                                    <div class="d-flex rol flex-column">
+                                        <div class="col">
+                                            <textarea class="form-control" style="resize: none;" name="reply_text"></textarea>
+                                        </div>
+                                        <div class="col text-end">
+                                            <button type="submit" class="btn btn-outline-secondary mt-2">댓글 달기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12">
+                            <hr>
+                        </div>
+                        
+
+                    <!-- </div> -->
+                </div>
+                {% endfor %}
+            </div>
+
         
             
         </div>
     </div>
 
 </div>
+
+<script>
+    const delCommentButton = document.getElementById("del_comment");
+    function deleteComment(obj) {
+        if(confirm("정말 댓글을 삭제하시겠습니까?") == true) {
+            const form = document.createElement('form');
+            form.setAttribute('method', 'POST');
+            form.setAttribute('action', obj.value);
+            
+            const csrf_token = document.createElement('div');
+            csrf_token.innerHTML = '{% csrf_token %}';
+            
+            form.appendChild(csrf_token);
+            document.body.appendChild(form);
+            form.submit();
+        } else {
+            return false;
+        }
+    }
+
+    function replyComment(pk) {
+        const replyForm = document.getElementById('text_'+pk)
+        const replyBtn = document.getElementById('text_comment_btn_'+pk)
+        console.log(' ', replyForm.style.display)
+        if (replyForm.style.display == "none") {
+            replyForm.setAttribute('style', 'display:block;')
+            replyBtn.innerHTML = "접기"
+        } else {
+            replyForm.setAttribute('style', 'display:none;')
+            replyBtn.innerHTML = "댓글 달기"
+        }
+        
+
+
+    }
+</script>
 
 {% endblock %}

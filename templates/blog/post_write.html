@@ -39,7 +39,9 @@
         </div>
         <div class="row g-3 mb-4">
             <div class="col">
+                {% if post.thumbnail_image %}
                 <div class="form-label fs-6">썸네일 이미지: <a href="{{ post.thumbnail_image.url }}" style="color: blue;">{{ post.thumbnail_image }}</a></div>
+                {% endif %}
                 {{ form.thumbnail_image }}
             </div>
         </div>

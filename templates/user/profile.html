@@ -25,6 +25,7 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col text-end">
+                            <a href="{% url 'user:user_delete' user.pk %}" class="card-link btn btn-danger">회원 탈퇴</a>
                             <a href="{% url 'user:user_change_password' %}" class="card-link btn btn-outline-danger">비밀번호 변경</a>
                             <a href="{% url 'user:user_profile_update' user.pk %}" class="card-link btn btn-outline-secondary">수정</a>
                         </div>
