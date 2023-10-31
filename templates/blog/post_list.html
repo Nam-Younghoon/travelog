@@ -36,12 +36,17 @@
                         <span>Posted by</span>
                         <span style="color: black;"><b><i>{{ post.author.nickname }}</i></b></span>
                     </small>
-                    <small class="text-muted fs-6">
+                    <small class="d-flex text-muted fs-6 flex-row gap-3">
                         <div class="d-flex align-items-center gap-2">
                             <img src="{% static './assets/view_icon.svg' %}">
                             <span>{{ post.views_count }}</span>
                         </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="{% static './assets/comment_icon.svg' %}">
+                            <span>{{ post.reply_count }}</span>
+                        </div>
                     </small>
+                    
                 </div>
                 </div>
             </a>

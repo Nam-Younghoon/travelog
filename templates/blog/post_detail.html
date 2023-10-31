@@ -34,11 +34,11 @@
     <div class="row justify-content-center">
         <div class="col col-md-7 g-5 pt-3">
             <h1 style="margin: 0 0 auto;">{{ post.title }}</h1>
-            <p class="d-flex justify-content-between fs-6" style="margin-top: 2rem;">{{ post.author.nickname }} · {{ post.updated_at|date:"Y년 m월 d일" }}
+            <p class="d-flex justify-content-between fs-6 align-items-center" style="margin-top: 2rem;">{{ post.author.nickname }} · {{ post.updated_at|date:"Y년 m월 d일" }}
                 {% if user == post.author %}
                 <span class="col-auto text-muted">
-                    <a href="{% url 'blog:blog_edit' post.pk %}" class="p-2">수정</a>
-                    <a href="{% url 'blog:blog_delete' post.pk %}">삭제</a>
+                    <a href="{% url 'blog:blog_edit' post.pk %}"><button class="btn btn-link-light">수정</button></a>
+                    <button type="submit" class="btn btn-link-light" style="text-decoration: none; padding: 8px 8px 8px 8px" onclick="delete_confirm(this)" value="{% url 'blog:blog_delete' post.pk %}">삭제</button>
                 </span>
                 {% endif %}
             </p>
@@ -96,7 +96,7 @@
                 <div class="container mt-4 mb-5">
                     <div class="row">
                         <div class="col-12 p-0">
-                            {{ commentForm.comment }}
+                            {{ commentForm.message }}
                         </div>
                         <div class="col-12 p-0 text-end mt-3">
                             <button type="submit" class="btn btn-outline-primary">댓글 달기</button>
@@ -109,27 +109,49 @@
                 {% for comment in post.comments.all %}
                 <div class="row">
 
-                    <!-- <div class="card g-2 p-2" style="background: white;"> -->
-                        <div class="d-flex col-12 flex-row justify-content-between" style="font-size: 1.1rem;">
-                            <div class="align-self-center"><b>{{ comment.author.nickname }}</b></div>
-                            {% if user == comment.author %}
-                            <button type="submit" class="btn btn-link-light" style="text-decoration: none;" value="{% url 'blog:blog_delete_comment' comment.pk %}" onclick="deleteComment(this)">삭제</button>
-                            {% endif %}
-                        </div>
-                        <div class="col-12" style="font-size: 0.9rem;">
-                            {{ comment.created_at|date:'Y년 m월 d일 G:i' }}
-                        </div>
-                        <br>
-                        <div class="col-12 mt-4">
-                            {{ comment.message }}
-                        </div>
-                        <div class="col-12 mt-3 mb-1">
-                            <button id="text_comment_btn_{{ comment.pk }}" class="btn btn-link p-0" style="text-decoration: none; color: #6c757d;" onclick="replyComment({{ comment.pk }})">댓글 달기</button>
+                        <div style="border-left: 3px solid #000;">
+                            <div class="d-flex col-12 flex-row justify-content-between" style="font-size: 1.1rem;">
+                                <div class="align-self-center"><b>{{ comment.author.nickname }}</b></div>
+                                {% if user == comment.author %}
+                                <button type="submit" class="btn btn-link-light" style="text-decoration: none;" value="{% url 'blog:blog_delete_comment' comment.pk %}" onclick="delete_confirm(this)">삭제</button>
+                                {% endif %}
+                            </div>
+                            <div class="col-12" style="font-size: 0.9rem;">
+                                {{ comment.created_at|date:'Y년 m월 d일 G:i' }}
+                            </div>
+                            <br>
+                            <div class="col-12 mt-4">
+                                {{ comment.message }}
+                            </div>
+                            <div class="col-12 mt-3 mb-1">
+                                <button id="text_comment_btn_{{ comment.pk }}" class="btn btn-link p-0" style="text-decoration: none; color: #6c757d;" onclick="replyComment({{ comment.pk }})">댓글 달기</button>
+                            </div>
                         </div>
                         
-                        <!--
-                            여기서 대댓글이 보여집니다.
-                        -->
+                        {% for recomment in comment.replys.all %}
+                            <div class="container mt-3">
+                                <div class="row">
+                                    <div class="col-2 align-self-center">
+                                        <!-- <img src="{% static './assets/reply_image.svg' %}"> -->
+                                    </div>
+                                    <div class="col-10" style="border-left: 3px solid #000;">
+                                        <div class="d-flex col flex-row justify-content-between" style="font-size: 1.1rem;">
+                                            <div class="align-self-center"><b>{{ recomment.author.nickname }}</b></div>
+                                            {% if user == recomment.author %}
+                                            <button type="submit" class="btn btn-link-light" style="text-decoration: none;" value="{% url 'blog:blog_delete_recomment' recomment.pk %}" onclick="delete_confirm(this)">삭제</button>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col" style="font-size: 0.9rem;">
+                                            {{ recomment.created_at|date:'Y년 m월 d일 G:i' }}
+                                        </div>
+                                        <br>
+                                        <div class="col">
+                                            {{ recomment.reply_message }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
 
                         <div class="col-12 mt-3 mb-1" id="text_{{ comment.pk }}"  style="display: none;" >
                             <form action="{% url 'blog:blog_comment_reply' comment.pk %}" method="post">
@@ -137,7 +159,7 @@
                                 <div class="container p-0">
                                     <div class="d-flex rol flex-column">
                                         <div class="col">
-                                            <textarea class="form-control" style="resize: none;" name="reply_text"></textarea>
+                                            {{ recommentForm.reply_message }}
                                         </div>
                                         <div class="col text-end">
                                             <button type="submit" class="btn btn-outline-secondary mt-2">댓글 달기</button>
@@ -149,9 +171,7 @@
                         <div class="col-12">
                             <hr>
                         </div>
-                        
-
-                    <!-- </div> -->
+                    
                 </div>
                 {% endfor %}
             </div>
@@ -164,9 +184,8 @@
 </div>
 
 <script>
-    const delCommentButton = document.getElementById("del_comment");
-    function deleteComment(obj) {
-        if(confirm("정말 댓글을 삭제하시겠습니까?") == true) {
+    function delete_confirm(obj) {
+        if(confirm("정말 삭제하시겠습니까?") == true) {
             const form = document.createElement('form');
             form.setAttribute('method', 'POST');
             form.setAttribute('action', obj.value);
@@ -194,8 +213,6 @@
             replyBtn.innerHTML = "댓글 달기"
         }
         
-
-
     }
 </script>
 

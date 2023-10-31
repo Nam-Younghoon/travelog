@@ -27,8 +27,11 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
+    def get_previous(self):
+        return self.get_previous_by_created_at()
     
-
+    def get_next(self):
+        return self.get_next_by_created_at()
     
 class Category(models.Model):
     type = models.CharField(max_length=10)
@@ -41,3 +44,37 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name='comments',
+    )
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+    )    
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.message
+    
+class ReplyComment(models.Model):
+    comment = models.ForeignKey(
+        Comment, on_delete=models.CASCADE, related_name='replys'
+    )
+    reply_message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.reply_message
+    
+    class Meta:
+        ordering = ['-created_at']

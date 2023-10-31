@@ -4,7 +4,7 @@ from django import forms
 from django.core.files.base import File
 from django.db.models.base import Model
 from django.forms.utils import ErrorList
-from .models import Post
+from .models import Post, Comment, ReplyComment
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -24,7 +24,30 @@ class PostForm(forms.ModelForm):
             },),
         }
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['message']
 
-    
+        widgets = {
+            'message': forms.Textarea(attrs={
+                'class': 'form-control',
+                'style': 'height: 6rem; resize: none;',
+                'placeholder': '댓글을 입력하세요',
+            })
+        }
+
+class ReplyCommentForm(forms.ModelForm):
+    class Meta:
+        model = ReplyComment
+        fields = ['reply_message']
+
+        widgets = {
+            'reply_message': forms.Textarea(attrs={
+                'class': 'form-control',
+                'style': 'height: 6rem; resize: none;',
+                'placeholder': '',
+            })
+        }
 
 
