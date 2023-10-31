@@ -24,7 +24,7 @@ class UserLoginView(LoginView):
     redirect_authenticated_user = True
     next_page = 'blog:blog_list'
 
-class UserProfileView(TemplateView):
+class UserProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'user/profile.html'
 
 class UserChangePasswordView(PasswordChangeView):
@@ -50,10 +50,13 @@ class UserProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
     def test_func(self) -> bool | None:
         return self.get_object() == self.request.user
     
-class UserDeleteView(DeleteView):
+class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = 'user/user_confirm_delete.html'
     model = get_user_model()
     success_url = reverse_lazy('home:home')
+
+    def test_func(self) -> bool | None:
+        return self.get_object() == self.request.user
 
 
 
