@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="ko-KR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oops!</title>
-</head>
-<body>
-    <h1>권한 없음</h1>
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
-    <dotlottie-player src="https://lottie.host/3e2dc2a2-2940-4b5e-ab7c-a38dc74c5dee/KSZo9NsnDV.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+<div class="container">
+    <div class="d-flex row flex-column justify-content-center">
+        <div class="col-auto m-auto">
+            <dotlottie-player src="https://lottie.host/3e2dc2a2-2940-4b5e-ab7c-a38dc74c5dee/KSZo9NsnDV.json" background="transparent" speed="1" style="width:300px;height:300px; " loop autoplay></dotlottie-player>
+        </div>
+        <div class="col text-center mt-5">
+            <div class="fs-3 text-muted">Oops! 요청하신 페이지의 권한이 없어요</div>
+        </div>
+        <div class="col-12 text-center">
+            <a href="{% url 'home:home' %}" class="btn btn-secondary mt-5">홈으로</a>
+        </div>
+    </div>
+</div>
 
-    <a href="{% url 'home:home' %}">홈으로</a>
-</body>
-</html>
+
+{% endblock %}
