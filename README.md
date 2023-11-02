@@ -150,7 +150,7 @@
 <details>
     <summary>테이블로 보기</summary>
     
-    |구분|기능명|설명|담당자|Routes|HTTP|진행도
+    |구분|기능명|설명|담당자|Routes|HTTP|진행도|
     |---|---|---|---|---|---|---|  
     |사용자|로그인|아이디, 비밀번호를 입력해 로그인합니다|남영훈|/user/login/|POST|완료|
     ||로그아웃|사용자를 로그아웃시키고, 시작페이지로 이동합니다|남영훈|/user/logout/|POST|완료|
@@ -171,6 +171,7 @@
     ||게시글 댓글 삭제|등록된 게시글에 남긴 댓글을 삭제합니다|남영훈|/blog/delete/comment/\<int:pk\>/|POST|완료|
     ||게시글 대댓글|등록된 게시글의 등록된 댓글에 대해 댓글을 작성합니다|남영훈|/blog/write/comment/reply/\<int:pk\>/|POST|완료|
     ||게시글 대댓글 삭제|등록된 게시글의 등록된 댓글에 대해 댓글을 작성합니다|남영훈|/blog/delete/recomment/\<int:pk\>/|POST|완료|
+    
 </details>
 
 
