@@ -44,7 +44,11 @@
             <div class="col col-md-7 mb-5" style="height: 26rem;">
                 <a href="{% url 'blog:blog_detail' post.pk %}">
                     <div class="card h-100">
-                    <img src="{{ post.thumbnail_image.url }}" class="card-img-top" alt="..." width="320" height="167" style="object-fit: cover;">
+                    {% if post.thumbnail_image %}
+                        <img src="{{ post.thumbnail_image.url }}" class="card-img-top" alt="..." width="320" height="167" style="object-fit: cover;">
+                    {% else %}
+                        <img src="{% static './images/default_logo.png' %}" class="card-img-top" alt="..." width="320" height="167" style="object-fit: cover;">
+                    {% endif %}
                     <div class="d-flex card-body flex-column">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text fs-6 mb-auto">{{ post.body|striptags|safe }}</p>
