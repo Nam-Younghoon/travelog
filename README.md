@@ -144,10 +144,11 @@
     </details>
 
 ### 기능명세서
-![기능명세서]("https://github.com/Nam-Younghoon/travelog/assets/58909988/4bdce680-15e7-42a4-8fcf-9732704b496d")
+<img width="1318" alt="travelog_기능명세서" src="https://github.com/Nam-Younghoon/travelog/assets/58909988/24a839e8-2acc-47d8-a91f-f1ead804d963">
+
 
 <details>
-    <summary>기능명세서</summary>
+    <summary>테이블로 보기</summary>
     |구분|기능명|설명|담당자|Routes|HTTP|진행도
     |---|---|---|---|---|---|---|  
     |사용자|로그인|아이디, 비밀번호를 입력해 로그인합니다|남영훈|/user/login/|POST|완료|
