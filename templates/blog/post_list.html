@@ -52,7 +52,41 @@
             </a>
         </div>
         {% endfor %}
-        
+
     </div>
 </main>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1" style="border-radius: 0.8rem 0rem 0rem 0.8rem;">Previous</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true" style="border-radius: 0.8rem 0rem 0rem 0.8rem;">Previous</a>
+    </li>
+    {% endif %}
+
+    {% for i in paginator.page_range %}
+        {% if page_obj.number == i %}
+        <li class="page-item active"><a class="page-link" href="#" style="border-radius: 0rem;">{{ i }}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{i}}" style="border-radius: 0rem;">{{ i }}</a></li>
+        {% endif %}
+        
+    {% endfor %}
+    
+
+    {% if page_obj.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{page_obj.next_page_number}}" style="border-radius: 0rem 0.8rem 0.8rem 0rem;">Next</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" href="#" style="border-radius: 0rem 0.8rem 0.8rem 0rem;">Next</a>
+    </li>
+    {% endif %}
+    </ul>
+</nav>
 {% endblock %}

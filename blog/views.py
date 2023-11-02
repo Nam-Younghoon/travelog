@@ -13,6 +13,7 @@ class BlogListView(ListView):
     model = Post
     context_object_name = 'posts'
     ordering = '-created_at'
+    paginate_by = 9
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
