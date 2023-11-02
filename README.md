@@ -144,6 +144,7 @@
     </details>
 
 ### 기능명세서
+![기능명세서](https://github.com/Nam-Younghoon/travelog/assets/58909988/9cd2170d-f2f0-40cb-b6d0-ebfe9341d27a)  
 
 <details>
     <summary>테이블로 보기</summary>
