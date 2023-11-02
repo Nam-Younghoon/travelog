@@ -144,8 +144,6 @@
     </details>
 
 ### 기능명세서
-<img width="1318" alt="travelog_기능명세서" src="https://github.com/Nam-Younghoon/travelog/assets/58909988/24a839e8-2acc-47d8-a91f-f1ead804d963">
-
 
 <details>
     <summary>테이블로 보기</summary>
