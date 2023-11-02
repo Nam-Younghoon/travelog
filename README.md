@@ -187,8 +187,91 @@
 
 
 ## 5. 개발 환경 및 배포
+[배포 URL](http://43.200.194.3/)
 
 ## 6. 프로젝트 구조
+```
+
+📦travelog
+ ┣ 📂.config
+ ┃ ┣ 📂nginx
+ ┃ ┃ ┗ 📜travelog.conf
+ ┃ ┗ 📂uwsgi
+ ┃ ┃ ┣ 📜travelog.ini
+ ┃ ┃ ┗ 📜uwsgi.service
+ ┣ 📂blog
+ ┃ ┣ 📂__pycache__
+ ┃ ┣ 📂migrations
+ ┃ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📜__init__.py
+ ┃ ┣ 📜admin.py
+ ┃ ┣ 📜apps.py
+ ┃ ┣ 📜forms.py
+ ┃ ┣ 📜models.py
+ ┃ ┣ 📜tests.py
+ ┃ ┣ 📜urls.py
+ ┃ ┗ 📜views.py
+ ┣ 📂home
+ ┃ ┣ 📂__pycache__
+ ┃ ┣ 📂migrations
+ ┃ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📜__init__.py
+ ┃ ┣ 📜admin.py
+ ┃ ┣ 📜apps.py
+ ┃ ┣ 📜models.py
+ ┃ ┣ 📜tests.py
+ ┃ ┣ 📜urls.py
+ ┃ ┗ 📜views.py
+ ┣ 📂media
+ ┣ 📂static
+ ┣ 📂templates
+ ┃ ┣ 📂blog
+ ┃ ┃ ┣ 📜post_confirm_delete.html
+ ┃ ┃ ┣ 📜post_detail.html
+ ┃ ┃ ┣ 📜post_list.html
+ ┃ ┃ ┣ 📜post_search.html
+ ┃ ┃ ┗ 📜post_write.html
+ ┃ ┣ 📂home
+ ┃ ┃ ┗ 📜home.html
+ ┃ ┣ 📂user
+ ┃ ┃ ┣ 📜login.html
+ ┃ ┃ ┣ 📜password_change_done.html
+ ┃ ┃ ┣ 📜password_change_form.html
+ ┃ ┃ ┣ 📜profile.html
+ ┃ ┃ ┣ 📜register.html
+ ┃ ┃ ┣ 📜update.html
+ ┃ ┃ ┗ 📜user_confirm_delete.html
+ ┃ ┣ 📜403.html
+ ┃ ┣ 📜404.html
+ ┃ ┗ 📜base.html
+ ┣ 📂travelog
+ ┃ ┣ 📂__pycache__
+ ┃ ┣ 📜__init__.py
+ ┃ ┣ 📜asgi.py
+ ┃ ┣ 📜settings.py
+ ┃ ┣ 📜urls.py
+ ┃ ┗ 📜wsgi.py
+ ┣ 📂user
+ ┃ ┣ 📂__pycache__
+ ┃ ┣ 📂migrations
+ ┃ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📜__init__.py
+ ┃ ┣ 📜admin.py
+ ┃ ┣ 📜apps.py
+ ┃ ┣ 📜forms.py
+ ┃ ┣ 📜models.py
+ ┃ ┣ 📜tests.py
+ ┃ ┣ 📜urls.py
+ ┃ ┗ 📜views.py
+ ┣ 📜.gitignore
+ ┣ 📜README.md
+ ┣ 📜db.sqlite3
+ ┣ 📜manage.py
+ ┗ 📜requirements.txt
+```
 
 ## 7. ERD
 
