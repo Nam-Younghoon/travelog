@@ -179,8 +179,10 @@
 ![wbs](https://github.com/Nam-Younghoon/travelog/assets/58909988/63254087-be51-4893-9b6a-fba445bf38e7)
 
 <details>
-    <summary>Task로 확인하기</summary>
-    ![travelog_wbs_notion](https://github.com/Nam-Younghoon/travelog/assets/58909988/aea723ea-bd3e-4711-8036-d60152b5718f)
+<summary>Task로 확인하기</summary>  
+
+![travelog_wbs_notion](https://github.com/Nam-Younghoon/travelog/assets/58909988/aea723ea-bd3e-4711-8036-d60152b5718f)
+
 </details>
 
 
