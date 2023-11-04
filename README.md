@@ -143,6 +143,9 @@
 
     </details>
 
+### 마인드맵
+![travelog_마인드맵](https://github.com/Nam-Younghoon/travelog/assets/58909988/144c5e0e-e43a-405a-97e9-ab9678df71b7)
+
 ### 기능명세서
   
 ![기능명세서](https://github.com/Nam-Younghoon/travelog/assets/58909988/9cd2170d-f2f0-40cb-b6d0-ebfe9341d27a)  
@@ -277,4 +280,12 @@ AWS Lightsail : [Travelog](http://43.200.194.3/)
 ## 8. 프로토타입
 URL : [카카오오븐](https://ovenapp.io/view/aPollCI5P7YxKZw4Fau4UaVxruaia9rL/o5XP9)
 
+|||
+|---|---|
+|![메인](https://github.com/Nam-Younghoon/travelog/assets/58909988/adb1291d-01af-497e-b22a-c78d6e864f37)<center>메인</center>|![회원가입](https://github.com/Nam-Younghoon/travelog/assets/58909988/25189603-1f46-4fa5-97d4-2626d860d1f9)<center>회원가입</center>|
+|![로그인](https://github.com/Nam-Younghoon/travelog/assets/58909988/43e7b49e-d8fb-447a-9ecb-27661c59bc57)<center>로그인</center>|![블로그 메인](https://github.com/Nam-Younghoon/travelog/assets/58909988/c51dc466-5d8d-4ffd-95a1-08f558a6ea73)<center>블로그 메인|
+|![블로그 상세](https://github.com/Nam-Younghoon/travelog/assets/58909988/bcb1153f-2247-4bac-9bff-d18fc26c6122)<center>게시글 상세|![블로그 검색](https://github.com/Nam-Younghoon/travelog/assets/58909988/b135f315-51f3-4349-95af-9aed0684cbc9)<center>게시글 검색|
+|![게시글 작성 및 수정](https://github.com/Nam-Younghoon/travelog/assets/58909988/b5c7152b-b728-4da3-a7d8-5fc70b894f15)<center>게시글 작성 및 수정|![내정보](https://github.com/Nam-Younghoon/travelog/assets/58909988/11f3a8f7-e6f9-4ec5-855e-9c29e39a0499)<center>내정보|
+|![비밀번호 변경](https://github.com/Nam-Younghoon/travelog/assets/58909988/a6ed94b1-8fd7-43dc-be22-270b0357caa0)<center>비밀번호 변경|![내정보 수정](https://github.com/Nam-Younghoon/travelog/assets/58909988/cfa5909e-1ee1-4dc3-bd13-54f2e7f1e3de)<center>회원정보 수정|
+|![회원탈퇴](https://github.com/Nam-Younghoon/travelog/assets/58909988/dbef75ea-0674-4f5e-a612-03a584b5a447)<center>회원탈퇴||
 
