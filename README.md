@@ -12,8 +12,10 @@
 6. [프로젝트 구조](#6-개발-일정-및-프로젝트-구조)
 7. [ERD](#7-ERD)
 8. [프로토타입](#8-프로토타입)
+9. [구현 내용](#9-구현-내용)
+10. [후기](#10-후기)
 
-## 1. 기획의도
+## 1. 기획 의도
 이전에 여행 했던 추억들을 언젠가 기억하고 싶을 때 볼 수 있는 블로그를 기획하였습니다  
 
 
@@ -190,7 +192,22 @@
 
 
 ## 5. 개발 환경 및 배포
-AWS Lightsail : [Travelog](http://43.200.194.3/)
+
+### 개발
+<img src="https://img.shields.io/badge/-HTML5-E34F26?logo=HTML5&logoColor=white"/>
+<img src="https://img.shields.io/badge/css3-1658a7?logo=css3&logoColor=white"/>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?logo=javascript&logoColor=white"/>
+<img src="https://img.shields.io/badge/bootstrap-7952B3?logo=bootstrap&logoColor=white"/>
+<img src="https://img.shields.io/badge/python-0769AD?logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/django-175339?logo=django&logoColor=white"/>
+
+### AWS
+![travelog_구성](https://github.com/Nam-Younghoon/travelog/assets/58909988/120b7810-bd94-4952-a493-460d078463a1)
+
+### 배포
+[Travelog](http://43.200.194.3/)
+
+
 
 ## 6. 프로젝트 구조
 ```
@@ -276,6 +293,7 @@ AWS Lightsail : [Travelog](http://43.200.194.3/)
 ```
 
 ## 7. ERD
+![travelog_erd](https://github.com/Nam-Younghoon/travelog/assets/58909988/c26fd604-74cc-42e2-9801-4b9295da7f0a)
 
 ## 8. 프로토타입
 URL : [카카오오븐](https://ovenapp.io/view/aPollCI5P7YxKZw4Fau4UaVxruaia9rL/o5XP9)
@@ -289,3 +307,101 @@ URL : [카카오오븐](https://ovenapp.io/view/aPollCI5P7YxKZw4Fau4UaVxruaia9rL
 |![비밀번호 변경](https://github.com/Nam-Younghoon/travelog/assets/58909988/a6ed94b1-8fd7-43dc-be22-270b0357caa0)<center>비밀번호 변경|![내정보 수정](https://github.com/Nam-Younghoon/travelog/assets/58909988/cfa5909e-1ee1-4dc3-bd13-54f2e7f1e3de)<center>회원정보 수정|
 |![회원탈퇴](https://github.com/Nam-Younghoon/travelog/assets/58909988/dbef75ea-0674-4f5e-a612-03a584b5a447)<center>회원탈퇴||
 
+## 9. 구현 내용
+### 홈 
+- 홈페이지입니다
+- 블로그로 이동하는 시작하기 버튼, 회원가입 및 로그인, 로그아웃이 가능한 버튼이 있습니다
+
+![travelog_홈](https://github.com/Nam-Younghoon/travelog/assets/58909988/d12c4999-1d9b-4feb-b93a-1f46c96db7f4)
+
+### 회원가입
+- 회원가입이 가능한 페이지입니다
+- 아이디, 닉네임, 이메일, 비밀번호를 입력받습니다
+
+![travelog_회원가입](https://github.com/Nam-Younghoon/travelog/assets/58909988/53e52db1-c933-4f55-b462-f8c872d2cb2e)
+
+### 로그인
+- 로그인을 할 수 있는 페이지입니다
+- 아이디, 비밀번호를 입력받습니다
+
+![travelog_로그인](https://github.com/Nam-Younghoon/travelog/assets/58909988/4332d190-38c9-42a1-bfb4-3c1f3e27b9f2)
+
+### 블로그 메인
+- 게시글 목록을 확인할 수 있는 페이지입니다
+- 모든 사용자들은 게시된 글들의 제목과 작성날짜, 작성자, 조회수, 댓글수를 확인할 수 있습니다
+
+![travelog_블로그메인](https://github.com/Nam-Younghoon/travelog/assets/58909988/4a48b4ac-1d29-42de-b681-ecaecc2f49fa)
+
+### 블로그 검색
+- 게시글 검색 페이지입니다
+- 제목과 카테고리, 태그에 따라 검색이 가능합니다
+
+![travelog_블로그검색](https://github.com/Nam-Younghoon/travelog/assets/58909988/a4217533-1032-46e4-83fb-f4bc10a085d5)
+
+### 블로그 상세
+- 게시글의 상세페이지입니다
+- 게시글의 제목, 내용, 태그, 댓글 등을 확인할 수 있습니다
+
+![travelog_블로그상세](https://github.com/Nam-Younghoon/travelog/assets/58909988/3a6d9dae-6bd6-4153-b6cd-2339a09616c6)
+
+### 게시물 등록
+- 게시물 등록 페이지입니다
+- 게시물 작성은 로그인을 한 유저만 가능합니다
+- 제목, 내용, 썸네일 이미지, 카테고리, 태그를 입력받습니다
+- 내용에는 이미지를 첨부할 수 있습니다
+- 게시물 등록 완료시, 등록한 게시물로 페이지가 리다이렉트 됩니다
+
+![travelog_게시물등록](https://github.com/Nam-Younghoon/travelog/assets/58909988/996f512e-83f9-4a6a-90d4-7268bd8a25ec)
+
+### 게시물 수정
+- 게시물을 수정할 수 있는 페이지입니다
+- 로그인을 했고, 내가 작성한 게시글만 수정 가능합니다
+- 그 외 게시물 등록과 동일합니다
+
+![travelog_게시물수정](https://github.com/Nam-Younghoon/travelog/assets/58909988/f3848011-6a46-4cec-a5dd-2b181507eb01)
+
+### 게시물 삭제
+- 게시물을 삭제하는 기능입니다
+- 로그인을 했고, 내가 작성한 게시글만 삭제 가능합니다
+- 삭제가 완료되면 게시글 목록 페이지로 리다이렉트 됩니다
+- 삭제된 게시글로 접근 시, 404 페이지로 이동해서 "존재하지 않는 페이지"임을 알려줍니다
+
+![travelog_게시물삭제](https://github.com/Nam-Younghoon/travelog/assets/58909988/0258c59a-e23f-42c0-9a17-662c5c5dc94c)
+
+### 게시물 댓글 및 대댓글
+- 게시물에 댓글을 다는 기능입니다.
+- 로그인을 한 사용자만 댓글을 작성할 수 있습니다
+- 댓글에 대한 댓글도 달 수 있습니다
+- 삭제 버튼 클릭 시, 내가 등록한 댓글을 삭제할 수 있습니다
+
+![travelog_댓글](https://github.com/Nam-Younghoon/travelog/assets/58909988/50bbaefd-d493-4292-8c74-382f0791c8c1)
+
+### 회원정보
+- 회원정보을 확인하는 페이지입니다
+- 사용자의 아이디, 닉네임, 이메일 주소를 확인할 수 있습니다
+
+![travelog_회원정보](https://github.com/Nam-Younghoon/travelog/assets/58909988/c3f1e82d-1fc3-4d0a-a6a3-5cc9267f1793)
+
+### 회원정보 수정
+- 회원정보를 수정하는 페이지입니다
+- 로그인을 한 사용자만 접근할 수 있습니다
+- 사용자의 닉네임과 이메일 주소를 수정할 수 있습니다
+- 수정 완료 시, 회원정보 페이지로 리다이렉트 됩니다
+
+![travelog_회원정보수정](https://github.com/Nam-Younghoon/travelog/assets/58909988/6c6b8b4a-fd28-44ba-8635-9354755355cd)
+
+### 회원 탈퇴
+- 회원탈퇴를 진행합니다
+- 로그인을 했고 사용자 본인만 탈퇴할 수 있습니다
+- 회원 탈퇴 시, 홈 페이지로 리다이렉트 됩니다
+
+![travelog_회원탈퇴](https://github.com/Nam-Younghoon/travelog/assets/58909988/2af159b8-3965-4fda-bd0c-3d25a503640d)
+
+### 비밀번호 변경
+- 사용자의 비밀번호를 변경하는 페이지입니다
+- 로그인을 했고 사용자 본인의 비밀번호만 변경할 수 있습니다
+- 비밀번호 변경 완료 시, 로그아웃으로 상태를 변경하고 로그인 페이지로 리다이렉트 됩니다
+
+![travelog_비밀번호변경](https://github.com/Nam-Younghoon/travelog/assets/58909988/8c50354f-60f9-4b65-8a7e-0ab09393995e)
+
+## 10. 후기
