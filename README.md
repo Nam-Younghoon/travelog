@@ -312,7 +312,7 @@ URL : [카카오오븐](https://ovenapp.io/view/aPollCI5P7YxKZw4Fau4UaVxruaia9rL
 - 홈페이지입니다
 - 블로그로 이동하는 시작하기 버튼, 회원가입 및 로그인, 로그아웃이 가능한 버튼이 있습니다
 
-![travelog_홈](https://github.com/Nam-Younghoon/travelog/assets/58909988/d12c4999-1d9b-4feb-b93a-1f46c96db7f4)
+![travelog_홈](https://github.com/Nam-Younghoon/travelog/assets/58909988/8f3fbc23-1433-4cab-a608-268fed98a0f9)
 
 ### 회원가입
 - 회원가입이 가능한 페이지입니다
