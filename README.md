@@ -318,13 +318,13 @@ URL : [카카오오븐](https://ovenapp.io/view/aPollCI5P7YxKZw4Fau4UaVxruaia9rL
 - 회원가입이 가능한 페이지입니다
 - 아이디, 닉네임, 이메일, 비밀번호를 입력받습니다
 
-![travelog_회원가입](https://github.com/Nam-Younghoon/travelog/assets/58909988/53e52db1-c933-4f55-b462-f8c872d2cb2e)
+![travelog_회원가입](https://github.com/Nam-Younghoon/travelog/assets/58909988/e88622c5-a552-4541-a4dd-f7318b69b17e)
 
 ### 로그인
 - 로그인을 할 수 있는 페이지입니다
 - 아이디, 비밀번호를 입력받습니다
 
-![travelog_로그인](https://github.com/Nam-Younghoon/travelog/assets/58909988/4332d190-38c9-42a1-bfb4-3c1f3e27b9f2)
+![travelog_로그인](https://github.com/Nam-Younghoon/travelog/assets/58909988/dce63c10-1eb6-4aa3-a968-3ba656cb2b3a)
 
 ### 블로그 메인
 - 게시글 목록을 확인할 수 있는 페이지입니다
@@ -402,6 +402,6 @@ URL : [카카오오븐](https://ovenapp.io/view/aPollCI5P7YxKZw4Fau4UaVxruaia9rL
 - 로그인을 했고 사용자 본인의 비밀번호만 변경할 수 있습니다
 - 비밀번호 변경 완료 시, 로그아웃으로 상태를 변경하고 로그인 페이지로 리다이렉트 됩니다
 
-![travelog_비밀번호변경](https://github.com/Nam-Younghoon/travelog/assets/58909988/8c50354f-60f9-4b65-8a7e-0ab09393995e)
+![travelog_비밀번호변경](https://github.com/Nam-Younghoon/travelog/assets/58909988/dbea0389-e64b-453a-88f5-aa6645b832fc)
 
 ## 10. 후기
