@@ -194,12 +194,12 @@
 ## 5. 개발 환경 및 배포
 
 ### 개발
-<img src="https://img.shields.io/badge/-HTML5-E34F26?logo=HTML5&logoColor=white"/>
-<img src="https://img.shields.io/badge/css3-1658a7?logo=css3&logoColor=white"/>
-<img src="https://img.shields.io/badge/javascript-F7DF1E?logo=javascript&logoColor=white"/>
-<img src="https://img.shields.io/badge/bootstrap-7952B3?logo=bootstrap&logoColor=white"/>
-<img src="https://img.shields.io/badge/python-0769AD?logo=python&logoColor=white"/>
-<img src="https://img.shields.io/badge/django-175339?logo=django&logoColor=white"/>
+<span><img src="https://img.shields.io/badge/-HTML5-E34F26?logo=HTML5&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/css3-1658a7?logo=css3&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/javascript-F7DF1E?logo=javascript&logoColr=white"/></span>
+<span><img src="https://img.shields.io/badge/bootstrap-7952B3?logo=bootstrap&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/python-0769AD?logo=python&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/django-175339?logo=django&logoColor=white"/></span>
 
 ### AWS
 ![travelog_구성](https://github.com/Nam-Younghoon/travelog/assets/58909988/120b7810-bd94-4952-a493-460d078463a1)
